@@ -3,7 +3,7 @@ package com.example.demo;
 import java.util.Date;
 
 public class Account {
-	public Account(String ownerName, Address address, double balance, String status,String accountType) {
+	public Account(String ownerName, Address address, float balance, Status status, AccountType accountType) {
 		super();
 		this.ownerName = ownerName;
 		this.address = address;
@@ -12,19 +12,14 @@ public class Account {
 		this.status = status;
 		this.accountType = accountType;
 	}
-	public String getAccountType() {
-		return accountType;
-	}
-	public void setAccountType(String accountType) {
-		this.accountType = accountType;
-	}
+	
 	private String ownerName;
 	private Address address;
-	private double balance;
+	private float balance;
 	private Date createdDate;
-	private String accountType;
-	private String status;
-	public String getOwnerName() {
+	private Status status;
+	private AccountType accountType;
+ 	public String getOwnerName() {
 		return ownerName;
 	}
 	public void setOwnerName(String ownerName) {
@@ -36,10 +31,10 @@ public class Account {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	public double getBalance() {
+	public float getBalance() {
 		return balance;
 	}
-	public void setBalance(double balance) {
+	public void setBalance(float balance) {
 		this.balance = balance;
 	}
 	public Date getCreatedDate() {
@@ -48,11 +43,17 @@ public class Account {
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	public String getStatus() {
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
+	}
+	public Status getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public AccountType getAccountType() {
+		return accountType;
 	}
 
 }
