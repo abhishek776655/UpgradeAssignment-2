@@ -3,18 +3,26 @@ package com.example.demo;
 import java.util.Date;
 
 public class Account {
-	public Account(String ownerName, String address, double balance, String status) {
+	public Account(String ownerName, Address address, double balance, String status,String accountType) {
 		super();
 		this.ownerName = ownerName;
 		this.address = address;
 		this.balance = balance;
 		this.createdDate = new Date();
 		this.status = status;
+		this.accountType = accountType;
+	}
+	public String getAccountType() {
+		return accountType;
+	}
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
 	}
 	private String ownerName;
-	private String address;
+	private Address address;
 	private double balance;
 	private Date createdDate;
+	private String accountType;
 	private String status;
 	public String getOwnerName() {
 		return ownerName;
@@ -22,10 +30,10 @@ public class Account {
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
 	}
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 	public double getBalance() {
