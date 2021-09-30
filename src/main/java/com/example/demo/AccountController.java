@@ -1,6 +1,9 @@
 package com.example.demo;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,24 +16,23 @@ import org.springframework.web.bind.annotation.RestController;;
 @RequestMapping("/account")
 public class AccountController {
 	ArrayList<Account> accounts = new ArrayList<>();
+	@Autowired
+	AccountService accountService;
+	
 	@GetMapping("/")
-	ArrayList<Account> getAccounts() {
-		return accounts;
+	List<Account> getAccounts() {
+		return accountService.getAccounts();
 	}
 	
 	@GetMapping("/{id}")
-	Account getAccount(@PathVariable("id") int id){
-		if(id < accounts.size()) {
-			System.out.println("id "+id);
-			return accounts.get(id);
-		}
-		return null;
+	Optional<Account> getAccount(@PathVariable("id") Integer id){
+		return accountService.getAccount(id);
 	}
 	
 	@PostMapping
 	String addAccount(@RequestBody Account account) {
 		System.out.println(account);
-		accounts.add(account);
+		accountService.save(account);
 		return "Account Added";
 	}
 	
